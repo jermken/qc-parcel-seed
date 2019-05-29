@@ -1,6 +1,6 @@
 {
   "name": "@jermken/qc-parcel-seed",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "this is a parcel seed for qc-cli",
   "main": "index.js",
   "scripts": {
