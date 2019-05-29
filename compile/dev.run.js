@@ -19,10 +19,7 @@ module.exports = async function() {
     } else {
         options = Object.assign({}, _default)
     }
-    const bundler = new Parcel(entryFile, options)
-    bundler.serve(options.port, options.https, options.hmrHostname)
-    let bundle = await bundler.bundle()
-
+    await new Parcel(entryFile, options).serve(options.port, options.https, options.hmrHostname)
     let openPage = qcConfig.openPage || 'index'
     open(`${options.https ? 'https':'http'}://${options.hmrHostname}:${options.port}/${openPage}/${openPage}.html`)
 }
