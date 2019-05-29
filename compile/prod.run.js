@@ -9,6 +9,7 @@ module.exports = async function(config = {}) {
         hmrHostname: 'localhost',
         port: 8080,
         outDir: './dist',
+        publicUrl: './',
         sourceMaps: false
     },
         options = Object.assign({}, _default, config),
