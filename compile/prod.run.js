@@ -3,7 +3,9 @@ const path = require('path')
 const logger = require('../lib/util/logger')
 const rimraf = require('rimraf')
 const fs = require('fs')
-module.exports = async function(config = {}) {
+const destConfig = require(path.resolve(process.env.CWD, './config.js'))
+
+module.exports = async function() {
     let _default = {
         https: false,
         hmrHostname: 'localhost',
@@ -11,15 +13,15 @@ module.exports = async function(config = {}) {
         outDir: './dist',
         publicUrl: './',
         sourceMaps: false
-    },
-        options = Object.assign({}, _default, config),
-        entryFile = path.resolve(process.cwd(), './src/entry/**/*.html');
+    }
+    let options = { ..._default, ...(destConfig.prod || {})}
+    let entryFile = path.resolve(process.env.CWD, './src/entry/**/*.html')
 
-    const outDir = path.join(process.cwd(), `/${_default.outDir}`)
+    const outDir = path.join(process.env.CWD, `/${_default.outDir}`)
     if (fs.existsSync(outDir)) {
         rimraf.sync(outDir)
     }
     const bundler = new Parcel(entryFile, options)
-    let bundle = await bundler.bundle()
+    await bundler.bundle()
     logger.success('compiled successfully')
 }
