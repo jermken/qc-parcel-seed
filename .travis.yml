@@ -6,8 +6,8 @@ script:
 
 deploy:
   provider: npm
-  emial: ${U_EMAIL}
-  api_key: ${NPM_TOKEN}
+  emial: "$U_EMAIL"
+  api_key: "$NPM_TOKEN"
 
 branches:
   only:
@@ -15,5 +15,5 @@ branches:
 
 notifications:
   email:
-    - ${U_EMAIL}
+    - "$U_EMAIL"
   on_failure: always
