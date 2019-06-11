@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+  - "10"
+script:
+  - npm run release
+
+branches:
+  only:
+    - master
+
+notifications:
+  email:
+    - jermken@163.com
+  on_failure: always
