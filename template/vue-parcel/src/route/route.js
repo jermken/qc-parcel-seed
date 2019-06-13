@@ -1,6 +1,6 @@
 import VueRouter from 'vue-router'
 
-const Home = () => import(/* webpackChunkName: "homePage" */ '../pages/home/home.vue')
+const Home = () => import('../pages/home/home.vue')
 
 const routes = [
     { path: '/', redirect: '/home' },
