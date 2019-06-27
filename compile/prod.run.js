@@ -22,6 +22,10 @@ module.exports = async function() {
         rimraf.sync(outDir)
     }
     const bundler = new Parcel(entryFile, options)
+
+    destConfig.beforeRun && typeof destConfig.beforeRun === 'function' && destConfig.beforeRun()
     await bundler.bundle()
+    destConfig.afterRun && typeof destConfig.befoafterRunreRun === 'function' && destConfig.afterRun()
+
     logger.success('compiled successfully')
 }

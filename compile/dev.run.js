@@ -16,6 +16,9 @@ module.exports = async function(options) {
     let _options = {..._default, ...(destConfig.dev || {})}
     let openPage = destConfig.openPage || 'index'
 
+    destConfig.beforeRun && typeof destConfig.beforeRun === 'function' && destConfig.beforeRun()
     await new Parcel(entryFile, _options).serve(_options.port, _options.https, _options.hmrHostname)
+    destConfig.afterRun && typeof destConfig.befoafterRunreRun === 'function' && destConfig.afterRun()
+
     open(`${_options.https ? 'https':'http'}://${_options.hmrHostname}:${_options.port}/${openPage}/${openPage}.html`)
 }
