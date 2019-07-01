@@ -3,13 +3,13 @@ const path = require('path')
 const open = require('open')
 const destConfig = require(path.resolve(process.env.CWD, './config.js'))
 
-module.exports = async function(options) {
+module.exports = async function(option) {
     let _default = {
         https: false,
         cache: false,
         hmrHostname: 'localhost',
-        watch: options.watch,
-        detailedReport: options.silent,
+        watch: option.watch,
+        minify: option.uglify,
         port: 8080
     }
     let entryFile = path.resolve(process.env.CWD, './src/entry/**/*.html')
